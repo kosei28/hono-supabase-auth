@@ -3,7 +3,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { MiddlewareHandler } from 'hono';
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie';
 
-export const supabaseAuth: MiddlewareHandler<{
+export const supabaseMiddleware: MiddlewareHandler<{
     Variables: {
         supabase: SupabaseClient;
     };

@@ -1,11 +1,11 @@
 import { Hono } from 'hono';
 import { authApp } from './auth';
 import { Layout } from './layout';
-import { supabaseAuth } from './supabase';
+import { supabaseMiddleware } from './supabase';
 
 const app = new Hono();
 
-app.get('/', supabaseAuth, async (c) => {
+app.get('/', supabaseMiddleware, async (c) => {
     const {
         data: { user },
     } = await c.var.supabase.auth.getUser();

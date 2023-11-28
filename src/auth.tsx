@@ -1,10 +1,10 @@
 import { Hono } from 'hono';
-import { supabaseAuth } from './supabase';
+import { supabaseMiddleware } from './supabase';
 import { Layout } from './layout';
 
 export const authApp = new Hono();
 
-authApp.get('/login/google', supabaseAuth, async (c) => {
+authApp.get('/login/google', supabaseMiddleware, async (c) => {
     const url = new URL(c.req.url);
     const {
         data: { url: loginUrl },
@@ -20,7 +20,7 @@ authApp.get('/login/google', supabaseAuth, async (c) => {
     return c.redirect('/auth/error');
 });
 
-authApp.get('/callback', supabaseAuth, async (c) => {
+authApp.get('/callback', supabaseMiddleware, async (c) => {
     const code = c.req.query('code');
     const next = c.req.query('next') ?? '/';
     if (code !== undefined) {
@@ -34,12 +34,12 @@ authApp.get('/callback', supabaseAuth, async (c) => {
     return c.redirect('/auth/error');
 });
 
-authApp.post('/logout', supabaseAuth, async (c) => {
+authApp.post('/logout', supabaseMiddleware, async (c) => {
     await c.var.supabase.auth.signOut();
     return c.redirect('/');
 });
 
-authApp.get('/error', supabaseAuth, async (c) => {
+authApp.get('/error', supabaseMiddleware, async (c) => {
     return c.html(
         <Layout title="ログインに失敗しました">
             <h1>ログインに失敗しました</h1>
