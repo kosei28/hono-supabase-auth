@@ -14,7 +14,7 @@ export const supabaseMiddleware: MiddlewareHandler<{
         {
             cookies: {
                 get: (key) => {
-                    return getCookie(c, key) ?? '';
+                    return getCookie(c, key);
                 },
                 set: (key, value, options) => {
                     setCookie(c, key, value, options);
