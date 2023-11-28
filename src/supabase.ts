@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
-import { SupabaseClient } from '@supabase/supabase-js';
-import { MiddlewareHandler } from 'hono';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { MiddlewareHandler } from 'hono';
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie';
 
 export const supabaseMiddleware: MiddlewareHandler<{

@@ -1,4 +1,4 @@
-import { Child, FC } from 'hono/jsx';
+import type { Child, FC } from 'hono/jsx';
 
 export const Layout: FC<{ title: string }> = (props: {
     children?: Child;
