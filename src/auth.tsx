@@ -39,7 +39,7 @@ authApp.post('/logout', supabaseMiddleware, async (c) => {
     return c.redirect('/');
 });
 
-authApp.get('/error', supabaseMiddleware, async (c) => {
+authApp.get('/error', async (c) => {
     return c.html(
         <Layout title="ログインに失敗しました">
             <h1>ログインに失敗しました</h1>
