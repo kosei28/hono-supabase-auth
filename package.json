@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "dev": "bun run --hot src/index.tsx"
+    },
+    "dependencies": {
+        "@supabase/ssr": "^0.0.10",
+        "@supabase/supabase-js": "^2.39.0",
+        "hono": "^3.10.3"
+    },
+    "devDependencies": {
+        "bun-types": "^1.0.7"
+    }
+}
