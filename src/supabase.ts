@@ -23,6 +23,10 @@ export const supabaseMiddleware: MiddlewareHandler<{
                     deleteCookie(c, key, options);
                 },
             },
+            cookieOptions: {
+                httpOnly: true,
+                secure: true,
+            },
         }
     );
     c.set('supabase', client);
