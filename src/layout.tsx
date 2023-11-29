@@ -8,6 +8,10 @@ export const Layout: FC<{ title: string }> = (props: {
         <html>
             <head>
                 <title>{props.title}</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
             </head>
             <body>{props.children}</body>
         </html>
