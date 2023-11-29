@@ -5,13 +5,12 @@ import { Layout } from './layout';
 export const authApp = new Hono();
 
 authApp.get('/login/google', supabaseMiddleware, async (c) => {
-    const url = new URL(c.req.url);
     const {
         data: { url: loginUrl },
     } = await c.var.supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: `${url.origin}/auth/callback`,
+            redirectTo: `${process.env.ORIGIN}/auth/callback`,
         },
     });
     if (loginUrl !== null) {
